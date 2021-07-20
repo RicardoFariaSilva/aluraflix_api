@@ -13,11 +13,11 @@ The main goal is develop a REST API to permit share videos.
 | Postgress     |   11.0        |
 
 ## Week 1
-- [x] Database
-- [x] POST request
-- [x] PUT/PATCH request
-- [x] GET index request
-- [x] GET request
-- [x] DELETE request
-- [x] Unit tests
+- [] Database
+- [] POST request
+- [] PUT/PATCH request
+- [] GET index request
+- [] GET request
+- [] DELETE request
+- [] Unit tests
 
