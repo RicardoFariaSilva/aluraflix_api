@@ -5,8 +5,12 @@ defmodule AluraflixApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", AluraflixApiWeb do
+  scope "/api", AluraflixApiWeb, as: :api do
     pipe_through :api
+
+    scope "/v1", Api.V1, as: :v1 do
+      resources "/videos", VideoController, except: [:new, :edit]
+    end
   end
 
   # Enables LiveDashboard only for development
