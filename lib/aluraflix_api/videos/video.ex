@@ -30,7 +30,6 @@ defmodule AluraflixApi.Videos.Video do
       case uri do
         %URI{scheme: nil} -> [{field, @invalid_url_message}]
         %URI{host: nil} -> [{field, @invalid_url_message}]
-        %URI{path: nil} -> [{field, @invalid_url_message}]
         ^uri -> []
       end
     end)

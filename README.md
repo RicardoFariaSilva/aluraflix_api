@@ -19,5 +19,5 @@ The main goal is develop a REST API to permit share videos.
 - [x] GET index request
 - [x] GET request
 - [x] DELETE request
-- [ ] Unit tests
+- [x] Unit tests
 
