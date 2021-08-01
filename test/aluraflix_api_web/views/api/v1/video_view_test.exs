@@ -1,4 +1,4 @@
-defmodule AluraflixApiWeb.VideoViewTest do
+defmodule AluraflixApiWeb.Api.V1.VideoViewTest do
   use AluraflixApiWeb.ConnCase, async: true
 
   import Phoenix.View

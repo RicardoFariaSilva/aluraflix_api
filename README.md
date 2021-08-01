@@ -21,6 +21,9 @@ After that, run `docker exec -it aluraflix_api_web_1 bash` to enter in the machi
 
 Run `mix ecto.setup` to have your development database. And `MIX_ENV=test mix ecto.setup` to setup your test database.
 
+## Tests
+Execute `MIX_ENV=test mix test` in order to run tests.
+
 ## Week 1
 - [x] Database
 - [x] POST request
@@ -31,11 +34,13 @@ Run `mix ecto.setup` to have your development database. And `MIX_ENV=test mix ec
 - [x] Unit tests
 
 ## Week 2
-- [ ] Database
-- [ ] POST request
-- [ ] PUT/PATCH request
-- [ ] GET index request
-- [ ] GET request
-- [ ] DELETE request
-- [ ] Unit tests
+- [x] Database
+- [x] Seeds
+- [x] POST request
+- [x] PUT/PATCH request
+- [x] GET index request
+- [x] GET request
+- [x] DELETE request
+- [x] GET categories videos request
+- [] Unit tests
 

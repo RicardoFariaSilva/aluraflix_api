@@ -4,9 +4,12 @@ defmodule AluraflixApi.Videos do
   """
 
   import Ecto.Query, warn: false
-  alias AluraflixApi.Repo
 
+  alias Ecto.Changeset
+  alias AluraflixApi.Repo
   alias AluraflixApi.Videos.Video
+  alias AluraflixApi.Categories.Category
+  alias AluraflixApi.Categories
 
   @doc """
   Returns the list of videos.
@@ -50,9 +53,26 @@ defmodule AluraflixApi.Videos do
 
   """
   def create_video(attrs \\ %{}) do
+    category = handle_category(attrs)
+
     %Video{}
     |> Video.changeset(attrs)
+    |> Changeset.put_assoc(:category, category)
     |> Repo.insert()
+  end
+
+  defp handle_category(attrs) do
+    case Map.has_key?(attrs, :category_id) do
+      false -> find_category(nil)
+      true -> find_category(attrs[:category_id])
+    end
+  end
+
+  defp find_category(nil) do
+    Category |> first() |> Repo.one!()
+  end
+  defp find_category(category_id) do
+    Categories.get_category!(category_id)
   end
 
   @doc """

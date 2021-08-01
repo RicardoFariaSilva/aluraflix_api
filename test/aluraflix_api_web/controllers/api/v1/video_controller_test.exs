@@ -26,7 +26,7 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
   end
 
   describe "index" do
-    # GET api/v1/video
+    # GET api/v1/videos
     test "lists all videos", %{conn: conn} do
       conn = get(conn, Routes.api_v1_video_path(conn, :index))
       assert json_response(conn, 200)["data"] == []
@@ -34,7 +34,7 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
   end
 
   describe "create video" do
-    # POST api/v1/video
+    # POST api/v1/videos
     test "renders video when data is valid", %{conn: conn} do
       conn = post(conn, Routes.api_v1_video_path(conn, :create), video: @create_attrs)
       assert %{"id" => id} = json_response(conn, 201)["data"]
@@ -56,7 +56,7 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
   end
 
   describe "update video" do
-    # PUT/PATCH api/v1/video/:id
+    # PUT/PATCH api/v1/videos/:id
     setup [:create_video]
 
     test "renders video when data is valid", %{conn: conn, video: %Video{id: id} = video} do
@@ -80,7 +80,7 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
   end
 
   describe "delete video" do
-    # DELETE api/v1/video/:id
+    # DELETE api/v1/videos/:id
     setup [:create_video]
 
     test "deletes chosen video", %{conn: conn, video: video} do

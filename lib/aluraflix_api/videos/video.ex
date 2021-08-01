@@ -18,8 +18,7 @@ defmodule AluraflixApi.Videos.Video do
   @doc false
   def changeset(video, attrs) do
     video
-    |> cast(attrs, [:title, :description, :url])
-    |> put_assoc(:category, attrs.category)
+    |> cast(attrs, [:title, :description, :url, :category_id])
     |> validate_required([:title, :description, :url])
     |> validate_length(:title, min: 5, max: 100)
     |> validate_length(:description, min: 10, max: 500)

@@ -10,6 +10,9 @@ defmodule AluraflixApiWeb.Router do
 
     scope "/v1", Api.V1, as: :v1 do
       resources "/videos", VideoController, except: [:new, :edit]
+      resources "/categories", CategoryController, except: [:new, :edit] do
+        resources "/videos", Categories.VideoController, only: [:index]
+      end
     end
   end
 
