@@ -25,6 +25,22 @@ defmodule AluraflixApi.Videos do
   end
 
   @doc """
+  Returns the list of videos filtered by title search.
+
+  ## Examples
+
+      iex> list_videos_by_search()
+      [%Video{}, ...]
+
+  """
+  def list_videos_by_search(search) do
+    like = "%#{search}%"
+    from(v in Video,
+      where: like(v.title, ^like),
+    ) |> Repo.all
+  end
+
+  @doc """
   Gets a single video.
 
   Raises `Ecto.NoResultsError` if the Video does not exist.

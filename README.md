@@ -42,5 +42,5 @@ Execute `MIX_ENV=test mix test` in order to run tests.
 - [x] GET request
 - [x] DELETE request
 - [x] GET categories videos request
-- [] Unit tests
+- [x] Unit tests
 

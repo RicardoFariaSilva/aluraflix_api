@@ -36,6 +36,12 @@ defmodule AluraflixApi.VideosTest do
       assert length(Videos.list_videos()) == 1
     end
 
+    test "list_videos_by_search/1 returns all videos with searched title" do
+      video_fixture()
+      assert length(Videos.list_videos_by_search("cool")) == 1
+      assert length(Videos.list_videos_by_search("wrong")) == 0
+    end
+
     test "get_video!/1 returns the video with given id" do
       video = video_fixture()
       assert Repo.preload(Videos.get_video!(video.id), :category) == Repo.preload(video, :category)

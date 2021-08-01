@@ -6,9 +6,16 @@ defmodule AluraflixApiWeb.Api.V1.VideoController do
 
   action_fallback AluraflixApiWeb.Api.V1.FallbackController
 
-  def index(conn, _params) do
-    videos = Videos.list_videos()
+  def index(conn, params) do
+    videos = find_videos(params)
     render(conn, "index.json", videos: videos)
+  end
+
+  defp find_videos(%{"search" => search}) do
+    Videos.list_videos_by_search(search)
+  end
+  defp find_videos(%{}) do
+    Videos.list_videos()
   end
 
   def create(conn, %{"video" => video_params}) do

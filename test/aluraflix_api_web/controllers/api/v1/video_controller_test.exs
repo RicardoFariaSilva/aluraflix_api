@@ -27,9 +27,21 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
 
   describe "index" do
     # GET api/v1/videos
-    test "lists all videos", %{conn: conn} do
+    test "lists all videos when no search is given", %{conn: conn} do
       conn = get(conn, Routes.api_v1_video_path(conn, :index))
       assert json_response(conn, 200)["data"] == []
+    end
+
+    test "lists all videos with title given", %{conn: conn} do
+      fixture(:video)
+
+      conn = get(conn, Routes.api_v1_video_path(conn, :index), search: "cool")
+      assert  [
+        %{"description" => "some description really cool",
+          "id" => _,
+          "title" => "some title really cool",
+          "url" => "https://www.youtube.com/watch?v=sa1G-zU7f9Y"}
+      ] = json_response(conn, 200)["data"]
     end
   end
 
