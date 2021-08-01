@@ -12,6 +12,15 @@ The main goal is develop a REST API to permit share videos.
 | Phoenix       |   1.5.9       |
 | Postgress     |   11.0        |
 
+## How to run?
+This project is dockerized. Install [Docker](https://docs.docker.com/) to be able to run.
+
+Run `docker compose up --build` to run docker compose and start app and postgres services.
+
+After that, run `docker exec -it aluraflix_api_web_1 bash` to enter in the machine.
+
+Run `mix ecto.setup` to have your development database. And `MIX_ENV=test mix ecto.setup` to setup your test database.
+
 ## Week 1
 - [x] Database
 - [x] POST request
@@ -20,4 +29,13 @@ The main goal is develop a REST API to permit share videos.
 - [x] GET request
 - [x] DELETE request
 - [x] Unit tests
+
+## Week 2
+- [ ] Database
+- [ ] POST request
+- [ ] PUT/PATCH request
+- [ ] GET index request
+- [ ] GET request
+- [ ] DELETE request
+- [ ] Unit tests
 

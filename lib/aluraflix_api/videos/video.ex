@@ -2,12 +2,15 @@ defmodule AluraflixApi.Videos.Video do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias AluraflixApi.Categories.Category
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "videos" do
     field :description, :string
     field :title, :string
     field :url, :string
+    belongs_to :category, Category
 
     timestamps()
   end
@@ -16,6 +19,7 @@ defmodule AluraflixApi.Videos.Video do
   def changeset(video, attrs) do
     video
     |> cast(attrs, [:title, :description, :url])
+    |> put_assoc(:category, attrs.category)
     |> validate_required([:title, :description, :url])
     |> validate_length(:title, min: 5, max: 100)
     |> validate_length(:description, min: 10, max: 500)
