@@ -9,6 +9,7 @@ defmodule AluraflixApiWeb.Router do
     pipe_through :api
 
     scope "/v1", Api.V1, as: :v1 do
+      get "/videos/free", VideoController, :free, as: :free
       resources "/videos", VideoController, except: [:new, :edit]
       resources "/categories", CategoryController, except: [:new, :edit] do
         resources "/videos", Categories.VideoController, only: [:index]

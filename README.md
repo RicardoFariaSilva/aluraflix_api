@@ -44,3 +44,9 @@ Execute `MIX_ENV=test mix test` in order to run tests.
 - [x] GET categories videos request
 - [x] Unit tests
 
+## Week 3
+- [] Free request
+- [] Pagination
+- [] Authentication
+- [] Deploy
+

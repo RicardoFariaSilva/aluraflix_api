@@ -47,4 +47,9 @@ defmodule AluraflixApiWeb.Api.V1.VideoController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def free(conn, _params) do
+    videos = Videos.free_videos()
+    render(conn, "index.json", videos: videos)
+  end
 end

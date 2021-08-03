@@ -137,4 +137,11 @@ defmodule AluraflixApi.Videos do
   def change_video(%Video{} = video, attrs \\ %{}) do
     Video.changeset(video, attrs)
   end
+
+  def free_videos do
+    from(v in Video,
+        join: c in assoc(v, :category),
+        where: c.title == "Free")
+    |> Repo.all
+  end
 end
