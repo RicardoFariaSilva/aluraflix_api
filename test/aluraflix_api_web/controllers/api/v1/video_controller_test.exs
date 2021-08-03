@@ -33,6 +33,13 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
       assert length(json_response(conn, 200)["data"]) != 0
     end
 
+    test "lists all videos with page param", %{conn: conn} do
+      fixture(:video)
+      conn = get(conn, Routes.api_v1_video_path(conn, :index), page: "1")
+      assert length(json_response(conn, 200)["data"]) != 0
+      assert json_response(conn, 200)["metadata"]["current_page"] == 1
+    end
+
     test "lists all videos with title given", %{conn: conn} do
       fixture(:video)
 

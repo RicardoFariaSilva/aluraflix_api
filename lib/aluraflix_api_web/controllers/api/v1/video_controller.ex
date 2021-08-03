@@ -7,15 +7,21 @@ defmodule AluraflixApiWeb.Api.V1.VideoController do
   action_fallback AluraflixApiWeb.Api.V1.FallbackController
 
   def index(conn, params) do
-    videos = find_videos(params)
-    render(conn, "index.json", videos: videos)
+    paginated = find_videos(params["page"], params["search"])
+    render(conn, "index_paginated.json", paginated: paginated)
   end
 
-  defp find_videos(%{"search" => search}) do
+  defp find_videos(nil, nil) do
+    Videos.list_videos()
+  end
+  defp find_videos(page, nil) do
+    Videos.list_videos(page)
+  end
+  defp find_videos(nil, search) do
     Videos.list_videos_by_search(search)
   end
-  defp find_videos(%{}) do
-    Videos.list_videos()
+  defp find_videos(page, search) do
+    Videos.list_videos_by_search(search, page)
   end
 
   def create(conn, %{"video" => video_params}) do

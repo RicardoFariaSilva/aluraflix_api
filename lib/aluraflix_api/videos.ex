@@ -10,6 +10,7 @@ defmodule AluraflixApi.Videos do
   alias AluraflixApi.Videos.Video
   alias AluraflixApi.Categories.Category
   alias AluraflixApi.Categories
+  alias AluraflixApiWeb.Paginator
 
   @doc """
   Returns the list of videos.
@@ -20,8 +21,8 @@ defmodule AluraflixApi.Videos do
       [%Video{}, ...]
 
   """
-  def list_videos do
-    Repo.all(Video)
+  def list_videos(page \\ "1") do
+    Paginator.paginate(Video, page)
   end
 
   @doc """
@@ -33,11 +34,11 @@ defmodule AluraflixApi.Videos do
       [%Video{}, ...]
 
   """
-  def list_videos_by_search(search) do
+  def list_videos_by_search(search, page \\ "1") do
     like = "%#{search}%"
     from(v in Video,
       where: like(v.title, ^like),
-    ) |> Repo.all
+    ) |> Paginator.paginate(page)
   end
 
   @doc """

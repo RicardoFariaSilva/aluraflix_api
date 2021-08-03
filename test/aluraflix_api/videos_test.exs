@@ -31,15 +31,54 @@ defmodule AluraflixApi.VideosTest do
       category
     end
 
-    test "list_videos/0 returns all videos" do
+    test "list_videos/1 returns all videos" do
       video_fixture()
-      assert length(Videos.list_videos()) != 0
+      videos = Videos.list_videos().list
+      assert length(videos) != 0
+    end
+
+    test "list_videos/1 returns a paginated query" do
+      video_fixture()
+      assert %{current_page: _,
+              results_per_page: _,
+              total_pages: _,
+              total_results: _,
+              list: _} = Videos.list_videos()
+    end
+
+    test "list_videos/1 sets page as 1 when none is given" do
+      video_fixture()
+      assert %{current_page: 1,
+              results_per_page: _,
+              total_pages: _,
+              total_results: _,
+              list: _} = Videos.list_videos()
     end
 
     test "list_videos_by_search/1 returns all videos with searched title" do
       video_fixture()
-      assert length(Videos.list_videos_by_search("cool")) == 1
-      assert length(Videos.list_videos_by_search("wrong")) == 0
+      cool_video = Videos.list_videos_by_search("cool").list
+      assert length(cool_video) == 1
+      wrong_video = Videos.list_videos_by_search("wrong").list
+      assert length(wrong_video) == 0
+    end
+
+    test "list_videos_by_search/1 returns a paginated query" do
+      video_fixture()
+      assert %{current_page: _,
+              results_per_page: _,
+              total_pages: _,
+              total_results: _,
+              list: _} = Videos.list_videos_by_search("cool")
+    end
+
+    test "list_videos_by_search/1 sets page as 1 when none is given" do
+      video_fixture()
+      assert %{current_page: 1,
+              results_per_page: _,
+              total_pages: _,
+              total_results: _,
+              list: _} = Videos.list_videos_by_search("cool")
     end
 
     test "get_video!/1 returns the video with given id" do
