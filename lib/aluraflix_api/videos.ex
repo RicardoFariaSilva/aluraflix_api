@@ -138,6 +138,15 @@ defmodule AluraflixApi.Videos do
     Video.changeset(video, attrs)
   end
 
+  @doc """
+  Returns the list of free videos. They are created in seeds script.
+
+  ## Examples
+
+      iex> free_videos()
+      [%Video{}, ...]
+
+  """
   def free_videos do
     from(v in Video,
         join: c in assoc(v, :category),

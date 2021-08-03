@@ -90,5 +90,10 @@ defmodule AluraflixApi.VideosTest do
       video = video_fixture()
       assert %Ecto.Changeset{} = Videos.change_video(video)
     end
+
+    test "free_videos/0 returns free videos" do
+      video_fixture()
+      assert length(Videos.free_videos()) != 0
+    end
   end
 end

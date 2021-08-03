@@ -106,6 +106,15 @@ defmodule AluraflixApiWeb.Api.V1.VideoControllerTest do
     end
   end
 
+  describe "free" do
+    # GET api/v1/videos
+    test "lists all free videos", %{conn: conn} do
+      fixture(:video)
+      conn = get(conn, Routes.api_v1_free_videos_path(conn, :free))
+      assert length(json_response(conn, 200)["data"]) != 0
+    end
+  end
+
   defp create_video(_) do
     video = fixture(:video)
     %{video: video}
