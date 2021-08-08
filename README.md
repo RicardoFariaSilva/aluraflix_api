@@ -48,5 +48,5 @@ Execute `MIX_ENV=test mix test` in order to run tests.
 - [x] Free request
 - [x] Pagination
 - [x] Authentication
-- [ ] Deploy
+- [x] Deploy
 
