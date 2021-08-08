@@ -5,7 +5,7 @@ defmodule AluraflixApi.MixProject do
     [
       app: :aluraflix_api,
       version: "0.1.0",
-      elixir: "~> 1.12.2",
+      elixir: "~> 1.12.0-rc.0",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
