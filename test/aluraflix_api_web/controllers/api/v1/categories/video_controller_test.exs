@@ -1,10 +1,18 @@
 defmodule AluraflixApiWeb.Api.V1.Categories.VideoControllerTest do
   use AluraflixApiWeb.ConnCase
 
-  alias AluraflixApi.{Categories, Videos}
+  alias AluraflixApi.{Categories, Videos, Accounts}
+  alias AluraflixApiWeb.Auth.Guardian
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    {:ok, user} = Accounts.create_user(%{email: "email1@test.com", password: "password"})
+    {:ok, jwt, _claims} = Guardian.encode_and_sign(user)
+    conn =
+      conn
+      |> put_req_header("accept", "application/json")
+      |> put_req_header("authorization", "Bearer #{jwt}")
+
+    {:ok, conn: conn}
   end
 
   @category_attrs %{

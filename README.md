@@ -47,6 +47,6 @@ Execute `MIX_ENV=test mix test` in order to run tests.
 ## Week 3
 - [x] Free request
 - [x] Pagination
-- [ ] Authentication
+- [x] Authentication
 - [ ] Deploy
 

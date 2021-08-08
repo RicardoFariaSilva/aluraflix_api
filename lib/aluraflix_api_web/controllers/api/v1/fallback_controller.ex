@@ -21,4 +21,11 @@ defmodule AluraflixApiWeb.Api.V1.FallbackController do
     |> put_view(AluraflixApiWeb.ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, {:error, :unauthorized}) do
+    conn
+    |> put_status(:unauthorized)
+    |> put_view(AluraflixApiWeb.ErrorView)
+    |> render(:"401")
+  end
 end

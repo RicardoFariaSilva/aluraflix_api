@@ -30,6 +30,7 @@ defmodule AluraflixApiWeb.Paginator do
   end
 
   def paginate(query, page) do
+    page = normalize_page(page)
     results = execute_query(query, page)
     total_results = count_total_results(query)
     total_pages = count_total_pages(total_results)
@@ -42,6 +43,9 @@ defmodule AluraflixApiWeb.Paginator do
       list: results
     }
   end
+
+  defp normalize_page(page) when page >= 1, do: page
+  defp normalize_page(_page), do: 1
 
   defp execute_query(query, page) do
     query

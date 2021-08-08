@@ -5,11 +5,24 @@ defmodule AluraflixApiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AluraflixApiWeb.Auth.Pipeline
+  end
+
   scope "/api", AluraflixApiWeb, as: :api do
     pipe_through :api
 
     scope "/v1", Api.V1, as: :v1 do
       get "/videos/free", VideoController, :free, as: :free_videos
+      post "/users/signup", UserController, :create
+      post "/users/signin", UserController, :signin
+    end
+  end
+
+  scope "/api", AluraflixApiWeb, as: :api do
+    pipe_through [:api, :auth]
+
+    scope "/v1", Api.V1, as: :v1 do
       resources "/videos", VideoController, except: [:new, :edit]
       resources "/categories", CategoryController, except: [:new, :edit] do
         resources "/videos", Categories.VideoController, only: [:index]

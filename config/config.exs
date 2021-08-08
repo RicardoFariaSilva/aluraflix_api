@@ -27,6 +27,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :aluraflix_api, AluraflixApiWeb.Auth.Guardian,
+  issuer: "aluraflix_api",
+  secret_key: "hbdwkm2zy3L1iWGxC584suhLLNXdTILt/pX9zZngYMOydpkP4bM3sn0bvEomXcks"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
