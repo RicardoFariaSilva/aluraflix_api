@@ -8,7 +8,7 @@ The main goal is develop a REST API to permit share videos.
 ## Tech stack
 | Nome          |Versão         |
 | ------------- |:-------------:|
-| Elixir        |   1.12.2      |
+| Elixir        |   1.12        |
 | Phoenix       |   1.5.9       |
 | Postgress     |   11.0        |
 
