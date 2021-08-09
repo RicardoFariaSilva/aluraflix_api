@@ -5,6 +5,8 @@ Project created to [Alura Back-end Challenge](https://www.alura.com.br/challenge
 
 The main goal is develop a REST API to permit share videos.
 
+Deployed in Heroku: `https://aluraflix-api-ricardo.herokuapp.com/`
+
 ## Tech stack
 | Nome          |Versão         |
 | ------------- |:-------------:|
@@ -50,3 +52,460 @@ Execute `MIX_ENV=test mix test` in order to run tests.
 - [x] Authentication
 - [x] Deploy
 
+## Endpoints
+
+### GET `/api/v1/videos/free`
+
+#### Request
+Body
+```json
+{}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": [
+        {
+            "description": "First free video",
+            "id": "d9baebe5-d6d7-4d0f-af71-ba21ecbbd2a1",
+            "title": "Free 1",
+            "url": "https://www.youtube.com/watch?v=9bZkp7q19f0"
+        },
+        {
+            "description": "Second free video",
+            "id": "c5687f6f-35a7-4312-8880-0af67aef6ad4",
+            "title": "Free 2",
+            "url": "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+        },
+        {
+            "description": "Third free video",
+            "id": "81025726-38dd-42f5-abe6-75a908b96779",
+            "title": "Free 3",
+            "url": "https://www.youtube.com/watch?v=xpVfcZ0ZcFM"
+        },
+        {
+            "description": "Fourth free video",
+            "id": "ff5f7b02-c546-44b8-87ce-23eeb1a0b946",
+            "title": "Free 4",
+            "url": "https://www.youtube.com/watch?v=SC4xMk98Pdc"
+        },
+        {
+            "description": "Fifth free video",
+            "id": "f988a9db-5fe8-4948-9ba6-5cbf7ea6a01a",
+            "title": "Free 5",
+            "url": "https://www.youtube.com/watch?v=UYwF-jdcVjY"
+        },
+        {
+            "description": "some description really cool",
+            "id": "c8492649-3fce-42c5-9ce6-48d834483099",
+            "title": "some title really cool",
+            "url": "https://www.youtube.com/watch?v=sa1G-zU7f9Y"
+        }
+    ]
+}
+```
+
+### POST `/api/v1/users/signup`
+
+#### Request
+Body
+```json
+{
+    "user": {
+        "email": "ricardo.faria.silva@outlook.com",
+        "password": "password"
+    }
+}
+```
+
+#### Response
+Status code 201
+
+Body
+```json
+{
+    "email": "ricardo.faria.silva@outlook.com.br",
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhbHVyYWZsaXhfYXBpIiwiZXhwIjoxNjMwOTY3NjUyLCJpYXQiOjE2Mjg1NDg0NTIsImlzcyI6ImFsdXJhZmxpeF9hcGkiLCJqdGkiOiJmOTc0ODdhMy03YTg4LTQyNDMtYjI2Ni1jY2Y1M2M2NmQzYmIiLCJuYmYiOjE2Mjg1NDg0NTEsInN1YiI6ImFmOWFkODYwLTgzNjMtNDlhZS1hZDY0LWUwNjkwYmM0M2M3NyIsInR5cCI6ImFjY2VzcyJ9.KnAsC10pERonzyYI8UvDTHn-Jru5E5BvVYUptbL2XF6iXJrHr8qQDMRCSZJ4_jnw9xrtrDt9w5n7zVC9-awOQA"
+}
+```
+
+### POST `/api/v1/users/signin`
+
+#### Request
+Body
+```json
+{
+    "user": {
+        "email": "ricardo.faria.silva@outlook.com",
+        "password": "password"
+    }
+}
+```
+
+#### Response
+Status code 201
+
+Body
+```json
+{
+    "email": "ricardo.faria.silva@outlook.com.br",
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhbHVyYWZsaXhfYXBpIiwiZXhwIjoxNjMwOTY3NjUyLCJpYXQiOjE2Mjg1NDg0NTIsImlzcyI6ImFsdXJhZmxpeF9hcGkiLCJqdGkiOiJmOTc0ODdhMy03YTg4LTQyNDMtYjI2Ni1jY2Y1M2M2NmQzYmIiLCJuYmYiOjE2Mjg1NDg0NTEsInN1YiI6ImFmOWFkODYwLTgzNjMtNDlhZS1hZDY0LWUwNjkwYmM0M2M3NyIsInR5cCI6ImFjY2VzcyJ9.KnAsC10pERonzyYI8UvDTHn-Jru5E5BvVYUptbL2XF6iXJrHr8qQDMRCSZJ4_jnw9xrtrDt9w5n7zVC9-awOQA"
+}
+```
+
+### POST `/api/v1/users/signup`
+
+#### Request
+Body
+```json
+{
+    "email": "ricardo.faria.silva@outlook.com",
+    "password": "password"
+}
+```
+
+#### Response
+Status code 201
+
+Body
+```json
+{
+    "email": "ricardo.faria.silva@outlook.com.br",
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhbHVyYWZsaXhfYXBpIiwiZXhwIjoxNjMwOTY3OTQyLCJpYXQiOjE2Mjg1NDg3NDIsImlzcyI6ImFsdXJhZmxpeF9hcGkiLCJqdGkiOiI2MWRlNmEzOC1mZTZkLTQ2NDItOGY1OC03ZGQyZDQyYzg0MWQiLCJuYmYiOjE2Mjg1NDg3NDEsInN1YiI6ImFmOWFkODYwLTgzNjMtNDlhZS1hZDY0LWUwNjkwYmM0M2M3NyIsInR5cCI6ImFjY2VzcyJ9.h822EgM3W2BuclneKRYegiidnFpaZyF09uQj97Ymoy8pcn-ekIt0mZp142E7cosdH2n9Wq6rFRN41rE44DNVUw"
+}
+```
+## All the following requests demands a jwt token. Please set the header `Authorization` with a valid bearer token from the signin/signup.
+<hr>
+
+### GET `/api/v1/videos`
+
+#### Request
+You may filter the videos by their title, using param `search`.
+Also you can choose the current passing the param `page`.
+Body
+```json
+{
+  "page": "", #optinal defaults as 1
+  "search": "" #optional
+}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": [
+        {
+            "description": "First free video",
+            "id": "d9baebe5-d6d7-4d0f-af71-ba21ecbbd2a1",
+            "title": "Free 1",
+            "url": "https://www.youtube.com/watch?v=9bZkp7q19f0"
+        },
+        {
+            "description": "Second free video",
+            "id": "c5687f6f-35a7-4312-8880-0af67aef6ad4",
+            "title": "Free 2",
+            "url": "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+        },
+        {
+            "description": "Third free video",
+            "id": "81025726-38dd-42f5-abe6-75a908b96779",
+            "title": "Free 3",
+            "url": "https://www.youtube.com/watch?v=xpVfcZ0ZcFM"
+        },
+        {
+            "description": "Fourth free video",
+            "id": "ff5f7b02-c546-44b8-87ce-23eeb1a0b946",
+            "title": "Free 4",
+            "url": "https://www.youtube.com/watch?v=SC4xMk98Pdc"
+        },
+        {
+            "description": "Fifth free video",
+            "id": "f988a9db-5fe8-4948-9ba6-5cbf7ea6a01a",
+            "title": "Free 5",
+            "url": "https://www.youtube.com/watch?v=UYwF-jdcVjY"
+        }
+    ],
+    "metadata": {
+        "current_page": 1,
+        "results_per_page": 5,
+        "total_pages": 2,
+        "total_results": 6
+    }
+}
+```
+
+### POST `/api/v1/videos`
+If none category_id is given, a default `Free` category will be chosen.
+#### Request
+Body
+```json
+{
+    "video": {
+            "description": "Sixth free video",
+            "title": "Free 6",
+            "url": "https://www.youtube.com/watch?v=e4LwnT8ebxI",
+            "category_id": "" #optional
+        }
+}
+```
+
+#### Response
+Status code 201
+
+Body
+```json
+{
+    "data": {
+        "description": "Sixth free video",
+        "id": "7cb36c4e-102a-4278-8673-03ef5d6ac9e5",
+        "title": "Free 6",
+        "url": "https://www.youtube.com/watch?v=e4LwnT8ebxI"
+    }
+}
+```
+
+### GET `/api/v1/videos/:id`
+
+#### Request
+Body
+```json
+{}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": {
+        "description": "Sixth free video",
+        "id": "7cb36c4e-102a-4278-8673-03ef5d6ac9e5",
+        "title": "Free 6",
+        "url": "https://www.youtube.com/watch?v=e4LwnT8ebxI"
+    }
+}
+```
+
+### PATCH `/api/v1/videos/:id`
+
+#### Request
+Body
+```json
+{
+    "video": {
+            "description": "Sixth free video update",
+            "title": "Free 6 update",
+            "url": "https://www.youtube.com/watch?v=e4LwnT8ebxI"
+        }
+}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": {
+        "description": "Sixth free video update",
+        "id": "7cb36c4e-102a-4278-8673-03ef5d6ac9e5",
+        "title": "Free 6 update",
+        "url": "https://www.youtube.com/watch?v=e4LwnT8ebxI"
+    }
+}
+```
+
+### DELETE `/api/v1/videos/:id`
+
+#### Request
+Body
+```json
+{}
+```
+
+#### Response
+Status code 204
+
+Body
+```json
+```
+
+### GET `/api/v1/categories`
+
+#### Request
+```json
+{}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": [
+        {
+            "color": "#FFF",
+            "id": "92097209-81a3-4e84-a7d0-42491275fc86",
+            "title": "Free"
+        }
+    ]
+}
+```
+
+### POST `/api/v1/categories`
+
+#### Request
+Body
+```json
+{
+    "category": {
+            "color": "#00FF00",
+            "title": "Comedy"
+        }
+}
+```
+
+#### Response
+Status code 201
+
+Body
+```json
+{
+    "data": {
+        "color": "#00FF00",
+        "id": "0c1e7632-72ed-4748-ab04-bc2b53217358",
+        "title": "Comedy"
+    }
+}
+```
+
+### GET `/api/v1/categories/:id`
+
+#### Request
+Body
+```json
+{}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": {
+        "color": "#00FF00",
+        "id": "0c1e7632-72ed-4748-ab04-bc2b53217358",
+        "title": "Comedy"
+    }
+}
+```
+
+### PATCH `/api/v1/videos/:id`
+
+#### Request
+Body
+```json
+{
+    "category": {
+            "color": "#00FF00",
+            "title": "Comedy update"
+        }
+}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "data": {
+        "color": "#00FF00",
+        "id": "0c1e7632-72ed-4748-ab04-bc2b53217358",
+        "title": "Comedy update"
+    }
+}
+```
+
+### DELETE `/api/v1/categories/:id`
+
+#### Request
+Body
+```json
+{}
+```
+
+#### Response
+Status code 204
+
+Body
+```json
+```
+
+### GET `/api/v1/categories/:category_id/videos`
+
+#### Request
+Body
+```json
+{}
+```
+
+#### Response
+Status code 200
+
+Body
+```json
+{
+    "color": "#FFF",
+    "id": "92097209-81a3-4e84-a7d0-42491275fc86",
+    "title": "Free",
+    "videos": [
+        {
+            "description": "First free video",
+            "id": "d9baebe5-d6d7-4d0f-af71-ba21ecbbd2a1",
+            "title": "Free 1",
+            "url": "https://www.youtube.com/watch?v=9bZkp7q19f0"
+        },
+        {
+            "description": "Second free video",
+            "id": "c5687f6f-35a7-4312-8880-0af67aef6ad4",
+            "title": "Free 2",
+            "url": "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+        },
+        {
+            "description": "Third free video",
+            "id": "81025726-38dd-42f5-abe6-75a908b96779",
+            "title": "Free 3",
+            "url": "https://www.youtube.com/watch?v=xpVfcZ0ZcFM"
+        },
+        {
+            "description": "Fourth free video",
+            "id": "ff5f7b02-c546-44b8-87ce-23eeb1a0b946",
+            "title": "Free 4",
+            "url": "https://www.youtube.com/watch?v=SC4xMk98Pdc"
+        },
+        {
+            "description": "Fifth free video",
+            "id": "f988a9db-5fe8-4948-9ba6-5cbf7ea6a01a",
+            "title": "Free 5",
+            "url": "https://www.youtube.com/watch?v=UYwF-jdcVjY"
+        },
+        {
+            "description": "some description really cool",
+            "id": "c8492649-3fce-42c5-9ce6-48d834483099",
+            "title": "some title really cool",
+            "url": "https://www.youtube.com/watch?v=sa1G-zU7f9Y"
+        }
+    ]
+}
+```
